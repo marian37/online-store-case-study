@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    pointer-events: auto;
+    border-radius: theme('borderRadius.md');
+    background-color: theme('colors.accent');
+    padding: theme('spacing.2') theme('spacing.3');
+    line-height: theme('spacing.5');
+    font-weight: 500;
+    color: theme('colors.white');
+  }
+  .btn:hover {
+    background-color: theme('colors.accent');
+  }
+}

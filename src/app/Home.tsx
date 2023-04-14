@@ -1,9 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const goToProducts = useCallback(() => {
+    navigate('/products');
+  }, [navigate]);
+
   return (
-    <div>
-      <Link to="/products">Start shopping</Link>
+    <div className="grid h-screen place-items-center">
+      <button onClick={goToProducts} className="btn">
+        Start shopping
+      </button>
     </div>
   );
 };
