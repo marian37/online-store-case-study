@@ -1,14 +1,19 @@
 import _ from 'lodash';
 import { useCallback, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { ArrowSmallLeftIcon } from '@heroicons/react/24/outline';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { cartSelector } from '../app/store';
+import { clearCart } from '../app/cartSlice';
+import { setOrder } from '../app/orderSlice';
 import { calculateTotal, calculateVat } from '../utils';
 import CartItemRow from './CartItemRow';
 
 const Cart = () => {
   const cart = useAppSelector(cartSelector);
+  const order = useAppSelector((state) => state.order);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const vatByCategory = useMemo(
     () =>
@@ -35,9 +40,12 @@ const Cart = () => {
 
   const sendOrder = useCallback(() => {
     console.log(cart);
-    // TODO empty the cart
-    // TODO redirect to order page
-  }, [cart]);
+    dispatch(clearCart());
+    dispatch(setOrder({ items: cart, total }));
+    navigate('/cart/order');
+  }, [cart, total, dispatch, navigate]);
+
+  if (order) return <Outlet />;
 
   return (
     <div className="px-16 mt-16 flex flex-col items-center">

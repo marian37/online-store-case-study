@@ -7,6 +7,7 @@ import {
 import _ from 'lodash';
 import products from '../app/productsSlice';
 import cart from '../app/cartSlice';
+import order from '../app/orderSlice';
 import { Product } from '../api/products';
 
 const dummyProduct: Product = {
@@ -23,7 +24,7 @@ export type CartItem = {
 };
 
 export const store = configureStore({
-  reducer: combineReducers({ products, cart }),
+  reducer: combineReducers({ products, cart, order }),
 });
 
 export const cartSelector = (state: RootState): CartItem[] =>
