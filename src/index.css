@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer components {
+  a {
+    color: theme('colors.accent');
+  }
+  tr {
+    border-bottom: 1px solid theme('colors.gray.300');
+  }
+  thead tr {
+    border-bottom: none;
+  }
+  td,
+  th {
+    padding: theme('spacing.4') theme('spacing.4');
+  }
+
   .btn {
     pointer-events: auto;
     border-radius: theme('borderRadius.md');
