@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from './app/Home';
-import Products from './app/Products';
-import Cart from './app/Cart';
-import Order from './app/Order';
+import Home from './components/Home';
+import Products from './components/Products';
+import Cart from './components/Cart';
+import Order from './components/Order';
 
 const App = () => {
   return (
